@@ -1,0 +1,73 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (get(/databases/$(database)/documents/profiles/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "robs46859@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+    function isValidProfile(data) {
+      return data.keys().hasAll(['uid', 'email', 'displayName']) &&
+             data.uid is string &&
+             data.email is string &&
+             data.displayName is string;
+    }
+
+    function isValidPlace(data) {
+      return data.keys().hasAll(['name', 'category', 'lat', 'lng']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             data.category in ['bathroom', 'nursing_room', 'rest_stop', 'hospital', 'baby_store', 'playground', 'pediatric_urgent_care', 'changing_station', 'cafe', 'prenatal_class'] &&
+             data.lat is number &&
+             data.lng is number;
+    }
+
+    function isValidReview(data) {
+      return data.keys().hasAll(['placeId', 'authorUid', 'authorName', 'cleanliness', 'privacy', 'strollerAccess']) &&
+             data.placeId is string &&
+             data.authorUid is string &&
+             data.authorName is string &&
+             data.cleanliness is number && data.cleanliness >= 1 && data.cleanliness <= 5 &&
+             data.privacy is number && data.privacy >= 1 && data.privacy <= 5 &&
+             data.strollerAccess is bool;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    // Profiles: users read/write only their own row
+    match /profiles/{uid} {
+      allow read, write: if true;
+    }
+
+    // Places
+    match /places/{placeId} {
+      allow read, write: if true;
+      
+      // Reviews
+      match /reviews/{reviewId} {
+        allow read, write: if true;
+      }
+    }
+
+    // Services
+    match /services/{serviceId} {
+      allow read, write: if true;
+    }
+  }
+}

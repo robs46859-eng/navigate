@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user preferences and pregnancy stage information.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "stage": { "type": "string", "enum": ["pregnant", "partner", "grandparent"] },
+        "dueDate": { "type": "string", "format": "date" },
+        "comfortRoutingEnabled": { "type": "boolean" }
+      },
+      "required": ["uid", "email", "stage"]
+    },
+    "Place": {
+      "title": "Place",
+      "description": "A location of interest for maternal comfort.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "category": { "type": "string", "enum": ["bathroom", "nursing_room", "rest_stop", "hospital"] },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "source": { "type": "string" },
+        "aggregateStats": {
+          "type": "object",
+          "properties": {
+            "avgCleanliness": { "type": "number" },
+            "avgPrivacy": { "type": "number" },
+            "strollerAccessRate": { "type": "number" },
+            "reviewCount": { "type": "integer" }
+          }
+        }
+      },
+      "required": ["name", "address", "category", "lat", "lng"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "User feedback on a specific place.",
+      "type": "object",
+      "properties": {
+        "placeId": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "authorName": { "type": "string" },
+        "cleanliness": { "type": "integer" },
+        "privacy": { "type": "integer" },
+        "strollerAccess": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["placeId", "authorUid", "cleanliness", "privacy", "strollerAccess"]
+    }
+  },
+  "firestore": {
+    "/profiles/{uid}": {
+      "schema": "UserProfile",
+      "description": "User profile documents."
+    },
+    "/places/{placeId}": {
+      "schema": "Place",
+      "description": "Maternal comfort locations."
+    },
+    "/places/{placeId}/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Reviews for a specific place."
+    }
+  }
+}

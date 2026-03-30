@@ -1,0 +1,5 @@
+{
+  "name": "MamaNav",
+  "description": "A specialized maternal comfort and navigation companion for expecting families, featuring essentials finder, comfort-aware routing, and emergency Labor Mode.",
+  "requestFramePermissions": ["geolocation"]
+}
