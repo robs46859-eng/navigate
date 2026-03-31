@@ -13,6 +13,15 @@ export default defineConfig(({mode}) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
+        'node-fetch': path.resolve(__dirname, 'node_modules/vite/dist/client/env.mjs'),
+      },
+    },
+    optimizeDeps: {
+      exclude: ['firebase-admin', 'better-sqlite3'],
+    },
+    build: {
+      rollupOptions: {
+        external: ['firebase-admin', 'better-sqlite3'],
       },
     },
     server: {

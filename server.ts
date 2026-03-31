@@ -10,11 +10,33 @@ const __dirname = path.dirname(__filename);
 
 // Initialize Firebase Admin
 const configPath = path.join(process.cwd(), "firebase-applet-config.json");
+let firebaseConfig: any = {};
+
 if (fs.existsSync(configPath)) {
-  const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+  firebaseConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+}
+
+const projectId = process.env.GOOGLE_PROJECT_ID || firebaseConfig.projectId;
+const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n');
+
+if (projectId && clientEmail && privateKey) {
+  // Initialize with Service Account credentials
   admin.initializeApp({
-    projectId: config.projectId,
+    credential: admin.credential.cert({
+      projectId,
+      clientEmail,
+      privateKey,
+    }),
+    projectId,
   });
+} else if (projectId) {
+  // Fallback to default credentials or just project ID (useful in some environments)
+  admin.initializeApp({
+    projectId,
+  });
+} else {
+  console.warn("Firebase Admin not initialized: Missing credentials or project ID.");
 }
 
 const db = admin.firestore();
