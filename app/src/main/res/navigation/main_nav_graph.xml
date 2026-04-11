@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.navigatemama.app.home.HomeFragment"
+        android:label="@string/home_nav" />
+
+    <fragment
+        android:id="@+id/journeyFragment"
+        android:name="com.navigatemama.app.journey.JourneyFragment"
+        android:label="@string/journey_nav" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.navigatemama.app.profile.ProfileFragment"
+        android:label="@string/profile_nav" />
+</navigation>

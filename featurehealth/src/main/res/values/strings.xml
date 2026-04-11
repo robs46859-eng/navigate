@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="health_module_name">Health tools</string>
+    <string name="health_title">Labor, kicks, and sleep</string>
+    <string name="log_contraction">Log contraction</string>
+    <string name="log_kicks">Log kicks</string>
+    <string name="log_sleep">Log sleep</string>
+    <string name="back">Back</string>
+</resources>

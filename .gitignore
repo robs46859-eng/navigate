@@ -6,3 +6,14 @@ coverage/
 *.log
 .env*
 !.env.example
+.gradle/
+local.properties
+captures/
+*.iml
+/.idea/
+/app/build/
+/core-data/build/
+/core-database/build/
+/core-model/build/
+/featurehealth/build/
+/featurecommunity/build/

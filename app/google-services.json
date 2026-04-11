@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "737833614671",
+    "project_id": "gen-lang-client-0689993858",
+    "storage_bucket": "gen-lang-client-0689993858.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737833614671:android:1d558be5c4d579e028193a",
+        "android_client_info": {
+          "package_name": "com.navigatemama.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737833614671-pqirm8aagfkn653cgjgm9vscbrhn538e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrBrjH53h0P2IOSfOUfVkk__7z3CEHOsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737833614671-1954fk0tvp9ec8256jvbujlg2djpl6vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

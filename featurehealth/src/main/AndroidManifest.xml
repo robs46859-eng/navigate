@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/health_module_name">
+        <dist:delivery>
+            <dist:install-time>
+                <dist:removable dist:value="true" />
+            </dist:install-time>
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application>
+        <activity
+            android:name=".HealthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NavigateMama">
+            <intent-filter>
+                <action android:name="com.navigatemama.featurehealth.OPEN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

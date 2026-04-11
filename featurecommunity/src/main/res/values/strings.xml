@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="community_module_name">Community</string>
+    <string name="community_title">Nearby parent community</string>
+    <string name="back">Back</string>
+</resources>

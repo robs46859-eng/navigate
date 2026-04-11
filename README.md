@@ -1,20 +1,70 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Navigate Mama
 
-# Run and deploy your AI Studio app
+`Navigate Mama` is now a native Android app scaffold for new and pregnant mothers, built in the existing `navigate` repo and structured for Android Studio.
 
-This contains everything you need to run your app locally.
+## What is in the project
 
-View your app in AI Studio: https://ai.studio/apps/5d7d75b5-2c3b-4f65-9379-8a3b18c3cfdb
+- Native multi-module Android project with:
+  - `app` base module
+  - `core-model`
+  - `core-database`
+  - `core-data`
+  - `featurehealth` dynamic feature, install-time and removable
+  - `featurecommunity` dynamic feature, on-demand download
+- Recommended Android architecture:
+  - `Room` for local persistence
+  - `ViewModel` + `LiveData` for UI state
+  - repositories separating data from UI
+- Native screens implemented:
+  - home map + nearby maternal-friendly places
+  - place detail + review logging
+  - pregnancy journey tracker
+  - profile and settings shell
+  - health tools module
+  - community module
+- Play Core integrations:
+  - in-app review
+  - in-app update check
+  - dynamic feature install guard + `SplitCompat`
 
-## Run Locally
+## Local build
 
-**Prerequisites:**  Node.js
+The repo includes a Gradle wrapper and builds with:
 
+- Android Gradle Plugin `8.7.3`
+- Kotlin `2.0.21`
+- Compile SDK `36`
+- JDK from Android Studio bundled runtime
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Build command:
+
+```bash
+./gradlew :app:assembleDebug
+```
+
+## Android Studio notes
+
+- Open `/Users/joeiton/AndroidStudioProjects/navigate` in Android Studio.
+- `local.properties` is configured for the local SDK path on this Mac.
+- Gradle memory is pre-tuned in `gradle.properties` with a 6 GB heap and parallel/cached builds.
+- The existing web app files are still present in the repo, but Android Studio should use the native Gradle project.
+
+## Live service configuration still needed
+
+The app currently builds and runs with seeded Denver data even if live services are not configured. To make the beta build production-connected, I still need these secrets/assets from you:
+
+1. Android Firebase config for project `ai-studio-5d7d75b5-2c3b-4f65-9379-8a3b18c3cfdb`
+   - ideally `google-services.json` for the Android app package you want to ship
+2. Google Maps Android SDK key
+   - set as `MAPS_API_KEY`
+3. Google Sign-In OAuth client details
+   - Android client ID / web client ID
+   - SHA-1 and SHA-256 package fingerprints that should be registered
+4. Final release package identity if different from current default:
+   - `com.navigatemama.app`
+
+## Current product assumptions
+
+- Geography is centered on Denver metro because the source app content was already Denver-based.
+- Seeded place data uses real named destinations and addresses for maternal-friendly stops and care locations.
+- Until live Firebase credentials are provided, authentication and Firestore sync stay in graceful local-first mode.
