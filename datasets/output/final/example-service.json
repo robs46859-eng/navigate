@@ -1,0 +1,102 @@
+{
+  "services": [
+    {
+      "name": "Denver Lactation",
+      "category": "lactation",
+      "description": "In-home and virtual breastfeeding support for new families.",
+      "rating": null,
+      "reviewCount": null,
+      "phone": "(720) 507-1001",
+      "email": "support@denverlactation.com",
+      "websiteUrl": "https://www.denverlactation.com/",
+      "hours": "9:00 AM - 6:00 PM",
+      "address": "1234 S Gilpin St, Denver, CO 80210",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "specializations": [
+        "Breastfeeding Support",
+        "Pumping Consultations",
+        "Weaning"
+      ],
+      "languages": [
+        "English"
+      ],
+      "insuranceAccepted": [
+        "Aetna",
+        "UnitedHealthcare",
+        "Self-Pay"
+      ],
+      "pricing": {
+        "range": null,
+        "estimate": null,
+        "details": null
+      },
+      "availability": "Available this week",
+      "verificationBadges": [
+        "IBCLC Certified"
+      ],
+      "imageUrl": null,
+      "photos": [],
+      "createdDate": null,
+      "_meta": {
+        "source_url": "https://www.denverlactation.com/",
+        "source_title": "Denver Lactation",
+        "source_date": null,
+        "evidence": "In-home and virtual breastfeeding support for new families.",
+        "confidence": 0.95,
+        "dedupe_key_hint": "denver_lactation|1234_s_gilpin_st,_denver,_co_80210|https:_www.denverlactation.com_"
+      }
+    },
+    {
+      "name": "Doulas of Denver",
+      "category": "birth_services",
+      "description": "Birth doula support, postpartum care, and placenta encapsulation services.",
+      "rating": null,
+      "reviewCount": null,
+      "phone": "(720) 310-0120",
+      "email": "info@doulasofdenver.com",
+      "websiteUrl": "https://www.doulasofdenver.com/",
+      "hours": "Open 24 hours",
+      "address": "383 Corona St, Denver, CO 80218",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "specializations": [
+        "Birth Doula",
+        "Postpartum Doula",
+        "Placenta Encapsulation"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "insuranceAccepted": [
+        "Self-Pay",
+        "HSA/FSA"
+      ],
+      "pricing": {
+        "range": null,
+        "estimate": null,
+        "details": null
+      },
+      "availability": "Accepting clients for Fall",
+      "verificationBadges": [
+        "DONA Certified"
+      ],
+      "imageUrl": null,
+      "photos": [],
+      "createdDate": null,
+      "_meta": {
+        "source_url": "https://www.doulasofdenver.com/",
+        "source_title": "Doulas of Denver",
+        "source_date": null,
+        "evidence": "Birth doula support, postpartum care, and placenta encapsulation services.",
+        "confidence": 0.95,
+        "dedupe_key_hint": "doulas_of_denver|383_corona_st,_denver,_co_80218|https:_www.doulasofdenver.com_"
+      }
+    }
+  ]
+}

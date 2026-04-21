@@ -1,0 +1,57 @@
+{
+  "places": [
+    {
+      "name": "",
+      "address": "",
+      "category": null,
+      "lat": null,
+      "lng": null,
+      "source": "Denver Art Museum",
+      "rating": null,
+      "reviewCount": null,
+      "description": "Museum with family visitor amenities including a dedicated place for nursing parents.",
+      "hours": "10:00 AM - 5:00 PM",
+      "phone": "(720) 865-5000",
+      "websiteUrl": "https://www.denverartmuseum.org/",
+      "photos": [],
+      "accessibilityFeatures": [
+        "wheelchair accessible entrances",
+        "family restrooms"
+      ],
+      "_meta": {
+        "source_url": "",
+        "source_title": "",
+        "source_date": null,
+        "evidence": "Official venue amenities page",
+        "confidence": 1.0,
+        "dedupe_key_hint": ""
+      }
+    },
+    {
+      "name": "",
+      "address": "",
+      "category": null,
+      "lat": null,
+      "lng": null,
+      "source": "Denver Health",
+      "rating": null,
+      "reviewCount": null,
+      "description": "Integrated health system and hospital serving Denver.",
+      "hours": "Open 24 hours",
+      "phone": "(303) 436-6000",
+      "websiteUrl": "https://www.denverhealth.org/",
+      "photos": [],
+      "accessibilityFeatures": [
+        "wheelchair accessible entrances"
+      ],
+      "_meta": {
+        "source_url": "",
+        "source_title": "",
+        "source_date": null,
+        "evidence": "Official hospital contact page",
+        "confidence": 1.0,
+        "dedupe_key_hint": ""
+      }
+    }
+  ]
+}

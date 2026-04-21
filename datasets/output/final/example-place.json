@@ -1,0 +1,61 @@
+{
+  "places": [
+    {
+      "name": "Denver Art Museum",
+      "address": "100 W 14th Ave Pkwy, Denver, CO 80204",
+      "category": "nursing_room",
+      "lat": null,
+      "lng": null,
+      "source": "Denver Art Museum",
+      "rating": null,
+      "reviewCount": null,
+      "description": "Museum with family visitor amenities including a dedicated place for nursing parents.",
+      "hours": "10:00 AM - 5:00 PM",
+      "phone": "(720) 865-5000",
+      "websiteUrl": "https://www.denverartmuseum.org/",
+      "photos": [],
+      "accessibilityFeatures": [
+        "wheelchair",
+        "family_restroom",
+        "changing_table"
+      ],
+      "aggregateStats": null,
+      "_meta": {
+        "source_url": "https://www.denverartmuseum.org/",
+        "source_title": "Official venue amenities page",
+        "source_date": null,
+        "evidence": "Official venue amenities page",
+        "confidence": 1,
+        "dedupe_key_hint": "denver_art_museum|100_w_14th_ave_pkwy,_denver,_co_80204|https:_www.denverartmuseum.org_"
+      }
+    },
+    {
+      "name": "Denver Health",
+      "address": "777 Bannock St, Denver, CO 80204",
+      "category": "hospital",
+      "lat": null,
+      "lng": null,
+      "source": "Denver Health",
+      "rating": null,
+      "reviewCount": null,
+      "description": "Integrated health system and hospital serving Denver.",
+      "hours": "Open 24 hours",
+      "phone": "(303) 436-6000",
+      "websiteUrl": "https://www.denverhealth.org/",
+      "photos": [],
+      "accessibilityFeatures": [
+        "wheelchair",
+        "family_restroom"
+      ],
+      "aggregateStats": null,
+      "_meta": {
+        "source_url": "https://www.denverhealth.org/",
+        "source_title": "Official hospital contact page",
+        "source_date": null,
+        "evidence": "Official hospital contact page",
+        "confidence": 1,
+        "dedupe_key_hint": "denver_health|777_bannock_st,_denver,_co_80204|https:_www.denverhealth.org_"
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "name": "",
+    "category": "lactation consultant",
+    "description": null,
+    "rating": null,
+    "reviewCount": null,
+    "phone": "(720) 507-1001",
+    "email": "support@denverlactation.com",
+    "websiteUrl": "https://www.denverlactation.com/",
+    "hours": "9:00 AM - 6:00 PM",
+    "address": "1234 S Gilpin St, Denver, CO 80210",
+    "coordinates": null,
+    "specializations": ["Breastfeeding Support", "Pumping Consultations", "Weaning"],
+    "languages": ["English"],
+    "insuranceAccepted": ["Aetna", "UnitedHealthcare", "Self-Pay"],
+    "pricing": {
+      "range": null,
+      "estimate": null,
+      "details": null
+    },
+    "availability": null,
+    "verificationBadges": [],
+    "imageUrl": null,
+    "photos": null,
+    "createdDate": null,
+    "_meta": {
+      "source_url": "",
+      "source_title": "Denver Lactation",
+      "source_date": null,
+      "evidence": null,
+      "confidence": 0.95,
+      "dedupe_key_hint": ""
+    }
+  },
+  {
+    "name": "",
+    "category": "birth services",
+    "description": null,
+    "rating": null,
+    "reviewCount": null,
+    "phone": "(720) 310-0120",
+    "email": "info@doulasofdenver.com",
+    "websiteUrl": "https://www.doulasofdenver.com/",
+    "hours": "Open 24 hours",
+    "address": "383 Corona St, Denver, CO 80218",
+    "coordinates": null,
+    "specializations": ["Birth Doula", "Postpartum Doula", "Placenta Encapsulation"],
+    "languages": ["English", "Spanish"],
+    "insuranceAccepted": ["Self-Pay", "HSA/FSA"],
+    "pricing": {
+      "range": null,
+      "estimate": null,
+      "details": null
+    },
+    "availability": "Accepting clients for Fall",
+    "verificationBadges": [],
+    "imageUrl": null,
+    "photos": null,
+    "createdDate": null,
+    "_meta": {
+      "source_url": "",
+      "source_title": "Doulas of Denver",
+      "source_date": null,
+      "evidence": null,
+      "confidence": 0.95,
+      "dedupe_key_hint": ""
+    }
+  }
+]

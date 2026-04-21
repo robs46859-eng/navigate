@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-04-21T23:54:33.680Z",
+  "discovered": [
+    {
+      "name": "Denver Art Museum",
+      "entity_type": "places",
+      "query": "",
+      "status": "ok",
+      "title": "Denver Art Museum",
+      "url": "https://www.denverartmuseum.org/en",
+      "file_stem": "places-denver-art-museum",
+      "allowed_domains": [
+        "denverartmuseum.org"
+      ]
+    },
+    {
+      "name": "Denver Health",
+      "entity_type": "places",
+      "query": "",
+      "status": "ok",
+      "title": "Denver Health",
+      "url": "https://www.denverhealth.org/",
+      "file_stem": "places-denver-health",
+      "allowed_domains": [
+        "denverhealth.org"
+      ]
+    },
+    {
+      "name": "Denver Lactation",
+      "entity_type": "services",
+      "query": "",
+      "status": "ok",
+      "title": "Denver Lactation",
+      "url": "https://www.denverlactation.com/",
+      "file_stem": "services-denver-lactation",
+      "allowed_domains": [
+        "denverlactation.com"
+      ]
+    },
+    {
+      "name": "Doulas of Denver",
+      "entity_type": "services",
+      "query": "",
+      "status": "ok",
+      "title": "Doulas of Denver",
+      "url": "https://www.doulasofdenver.com/",
+      "file_stem": "services-doulas-of-denver",
+      "allowed_domains": [
+        "doulasofdenver.com"
+      ]
+    }
+  ]
+}

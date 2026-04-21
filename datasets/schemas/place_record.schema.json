@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Navigate Place Record",
+  "type": "object",
+  "required": ["places"],
+  "properties": {
+    "places": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "address",
+          "category",
+          "lat",
+          "lng",
+          "source",
+          "rating",
+          "reviewCount",
+          "description",
+          "hours",
+          "phone",
+          "websiteUrl",
+          "photos",
+          "accessibilityFeatures",
+          "aggregateStats",
+          "_meta"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": [
+              "bathroom",
+              "nursing_room",
+              "hospital",
+              "playground",
+              "pediatric_urgent_care",
+              "cafe",
+              "changing_station",
+              "prenatal_class",
+              "rest_stop"
+            ]
+          },
+          "lat": { "type": ["number", "null"] },
+          "lng": { "type": ["number", "null"] },
+          "source": { "type": "string" },
+          "rating": { "type": ["number", "null"] },
+          "reviewCount": { "type": ["number", "null"] },
+          "description": { "type": ["string", "null"] },
+          "hours": { "type": ["string", "null"] },
+          "phone": { "type": ["string", "null"] },
+          "websiteUrl": { "type": ["string", "null"] },
+          "photos": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "accessibilityFeatures": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "wheelchair",
+                "family_restroom",
+                "nursing_room",
+                "changing_table",
+                "stroller_parking"
+              ]
+            }
+          },
+          "aggregateStats": {
+            "type": ["object", "null"],
+            "properties": {
+              "avgCleanliness": { "type": ["number", "null"] },
+              "avgPrivacy": { "type": ["number", "null"] },
+              "strollerAccessRate": { "type": ["number", "null"] },
+              "reviewCount": { "type": ["number", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "_meta": {
+            "type": "object",
+            "required": [
+              "source_url",
+              "source_title",
+              "source_date",
+              "evidence",
+              "confidence",
+              "dedupe_key_hint"
+            ],
+            "properties": {
+              "source_url": { "type": "string" },
+              "source_title": { "type": "string" },
+              "source_date": { "type": ["string", "null"] },
+              "evidence": { "type": "string" },
+              "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+              "dedupe_key_hint": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

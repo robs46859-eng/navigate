@@ -1,0 +1,134 @@
+import type { Place, Service } from '../types';
+
+export const GENERATED_PLACES: Place[] = [
+  {
+    "id": "generated-place-1",
+    "name": "Denver Art Museum",
+    "address": "100 W 14th Ave Pkwy, Denver, CO 80204",
+    "category": "nursing_room",
+    "lat": null,
+    "lng": null,
+    "source": "Denver Art Museum",
+    "rating": null,
+    "reviewCount": null,
+    "description": "Museum with family visitor amenities including a dedicated place for nursing parents.",
+    "hours": "10:00 AM - 5:00 PM",
+    "phone": "(720) 865-5000",
+    "websiteUrl": "https://www.denverartmuseum.org/",
+    "photos": [],
+    "accessibilityFeatures": [
+      "wheelchair",
+      "family_restroom",
+      "changing_table"
+    ],
+    "aggregateStats": null
+  },
+  {
+    "id": "generated-place-2",
+    "name": "Denver Health",
+    "address": "777 Bannock St, Denver, CO 80204",
+    "category": "hospital",
+    "lat": null,
+    "lng": null,
+    "source": "Denver Health",
+    "rating": null,
+    "reviewCount": null,
+    "description": "Integrated health system and hospital serving Denver.",
+    "hours": "Open 24 hours",
+    "phone": "(303) 436-6000",
+    "websiteUrl": "https://www.denverhealth.org/",
+    "photos": [],
+    "accessibilityFeatures": [
+      "wheelchair",
+      "family_restroom"
+    ],
+    "aggregateStats": null
+  }
+];
+
+export const GENERATED_SERVICES: Service[] = [
+  {
+    "id": "generated-service-1",
+    "name": "Denver Lactation",
+    "category": "lactation",
+    "description": "In-home and virtual breastfeeding support for new families.",
+    "rating": null,
+    "reviewCount": null,
+    "phone": "(720) 507-1001",
+    "email": "support@denverlactation.com",
+    "websiteUrl": "https://www.denverlactation.com/",
+    "hours": "9:00 AM - 6:00 PM",
+    "address": "1234 S Gilpin St, Denver, CO 80210",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "specializations": [
+      "Breastfeeding Support",
+      "Pumping Consultations",
+      "Weaning"
+    ],
+    "languages": [
+      "English"
+    ],
+    "insuranceAccepted": [
+      "Aetna",
+      "UnitedHealthcare",
+      "Self-Pay"
+    ],
+    "pricing": {
+      "range": null,
+      "estimate": null,
+      "details": null
+    },
+    "availability": "Available this week",
+    "verificationBadges": [
+      "IBCLC Certified"
+    ],
+    "imageUrl": null,
+    "photos": [],
+    "createdDate": null
+  },
+  {
+    "id": "generated-service-2",
+    "name": "Doulas of Denver",
+    "category": "birth_services",
+    "description": "Birth doula support, postpartum care, and placenta encapsulation services.",
+    "rating": null,
+    "reviewCount": null,
+    "phone": "(720) 310-0120",
+    "email": "info@doulasofdenver.com",
+    "websiteUrl": "https://www.doulasofdenver.com/",
+    "hours": "Open 24 hours",
+    "address": "383 Corona St, Denver, CO 80218",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "specializations": [
+      "Birth Doula",
+      "Postpartum Doula",
+      "Placenta Encapsulation"
+    ],
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "insuranceAccepted": [
+      "Self-Pay",
+      "HSA/FSA"
+    ],
+    "pricing": {
+      "range": null,
+      "estimate": null,
+      "details": null
+    },
+    "availability": "Accepting clients for Fall",
+    "verificationBadges": [
+      "DONA Certified"
+    ],
+    "imageUrl": null,
+    "photos": [],
+    "createdDate": null
+  }
+];

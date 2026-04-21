@@ -1,0 +1,34 @@
+{
+  "dataset_name": "navigate-metro-pack",
+  "target_city": "Denver",
+  "target_state": "CO",
+  "entity_types": [
+    "places",
+    "services"
+  ],
+  "priority_categories": {
+    "places": [
+      "hospital",
+      "pediatric_urgent_care",
+      "nursing_room",
+      "changing_station",
+      "playground",
+      "prenatal_class"
+    ],
+    "services": [
+      "pediatrician",
+      "lactation",
+      "therapist",
+      "birth_services",
+      "sleep_consultant",
+      "babysitting",
+      "exercise"
+    ]
+  },
+  "dedupe_strategy": "name + address + websiteUrl",
+  "required_source_fields": [
+    "source_url",
+    "source_title",
+    "evidence"
+  ]
+}

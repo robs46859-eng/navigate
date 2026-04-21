@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Navigate Service Record",
+  "type": "object",
+  "required": ["services"],
+  "properties": {
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "category",
+          "description",
+          "rating",
+          "reviewCount",
+          "phone",
+          "email",
+          "websiteUrl",
+          "hours",
+          "address",
+          "coordinates",
+          "specializations",
+          "languages",
+          "insuranceAccepted",
+          "pricing",
+          "availability",
+          "verificationBadges",
+          "imageUrl",
+          "photos",
+          "createdDate",
+          "_meta"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": [
+              "babysitting",
+              "pediatrician",
+              "therapist",
+              "exercise",
+              "lactation",
+              "birth_services",
+              "sleep_consultant"
+            ]
+          },
+          "description": { "type": ["string", "null"] },
+          "rating": { "type": ["number", "null"] },
+          "reviewCount": { "type": ["number", "null"] },
+          "phone": { "type": ["string", "null"] },
+          "email": { "type": ["string", "null"] },
+          "websiteUrl": { "type": ["string", "null"] },
+          "hours": { "type": ["string", "null"] },
+          "address": { "type": "string" },
+          "coordinates": {
+            "type": "object",
+            "required": ["lat", "lng"],
+            "properties": {
+              "lat": { "type": ["number", "null"] },
+              "lng": { "type": ["number", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "specializations": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "languages": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "insuranceAccepted": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "pricing": {
+            "type": "object",
+            "required": ["range", "estimate", "details"],
+            "properties": {
+              "range": {
+                "type": ["string", "null"],
+                "enum": ["$", "$$", "$$$", null]
+              },
+              "estimate": { "type": ["string", "null"] },
+              "details": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "availability": { "type": ["string", "null"] },
+          "verificationBadges": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "imageUrl": { "type": ["string", "null"] },
+          "photos": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "createdDate": { "type": ["string", "null"] },
+          "_meta": {
+            "type": "object",
+            "required": [
+              "source_url",
+              "source_title",
+              "source_date",
+              "evidence",
+              "confidence",
+              "dedupe_key_hint"
+            ],
+            "properties": {
+              "source_url": { "type": "string" },
+              "source_title": { "type": "string" },
+              "source_date": { "type": ["string", "null"] },
+              "evidence": { "type": "string" },
+              "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+              "dedupe_key_hint": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

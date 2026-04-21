@@ -1,0 +1,29 @@
+{
+  "max_results_per_query": 2,
+  "sources": [
+    {
+      "name": "Denver Art Museum",
+      "entity_type": "places",
+      "url": "https://www.denverartmuseum.org/en",
+      "allowed_domains": ["denverartmuseum.org"]
+    },
+    {
+      "name": "Denver Health",
+      "entity_type": "places",
+      "url": "https://www.denverhealth.org/",
+      "allowed_domains": ["denverhealth.org"]
+    },
+    {
+      "name": "Denver Lactation",
+      "entity_type": "services",
+      "url": "https://www.denverlactation.com/",
+      "allowed_domains": ["denverlactation.com"]
+    },
+    {
+      "name": "Doulas of Denver",
+      "entity_type": "services",
+      "url": "https://www.doulasofdenver.com/",
+      "allowed_domains": ["doulasofdenver.com"]
+    }
+  ]
+}
