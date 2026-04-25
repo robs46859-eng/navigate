@@ -21,7 +21,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/surface_container_low"
-        app:itemActiveIndicatorColor="@color/surface_container_high"
         app:itemIconTint="@color/bottom_nav_icon_tint"
         app:itemTextColor="@color/bottom_nav_icon_tint"
         app:layout_constraintBottom_toBottomOf="parent"

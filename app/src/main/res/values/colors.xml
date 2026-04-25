@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- DESIGNMASTER: Kinetic Monolith — cold steel, obsidian, matte orange (see DESIGNMASTER.md) -->
-    <color name="surface">#131314</color>
-    <color name="surface_container_low">#1B1B1C</color>
-    <color name="surface_container_high">#2A2A2B</color>
-    <color name="surface_container_highest">#3A3A3B</color>
+    <color name="surface">#FFF8F4</color>
+    <color name="surface_container_low">#FFFFFF</color>
+    <color name="surface_container_high">#F7E8E0</color>
+    <color name="surface_container_highest">#EFD8CE</color>
 
-    <color name="primary_light">#FFB59F</color>
-    <color name="primary_container">#FF7043</color>
-    <color name="on_primary">#131314</color>
+    <color name="primary_light">#FFE0D2</color>
+    <color name="primary_container">#D85D75</color>
+    <color name="on_primary">#FFFFFF</color>
 
-    <color name="on_surface">#F4F1ED</color>
-    <color name="on_surface_variant">#C4C0BC</color>
+    <color name="on_surface">#2B2022</color>
+    <color name="on_surface_variant">#755C62</color>
 
-    <color name="outline_variant">#59413A</color>
-    <color name="ghost_border">#2659413A</color>
+    <color name="outline_variant">#E3BFC6</color>
+    <color name="ghost_border">#33E3BFC6</color>
 
-    <color name="error">#FFB4AB</color>
-    <color name="on_error">#131314</color>
+    <color name="error">#BA1A1A</color>
+    <color name="on_error">#FFFFFF</color>
 
     <!-- Legacy names mapped to tokens (existing layouts) -->
     <color name="ink">@color/on_surface</color>

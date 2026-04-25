@@ -6,6 +6,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.navigatemama.core.database.entity.CareEventEntity
+import com.navigatemama.core.database.entity.ChildProfileEntity
 import com.navigatemama.core.database.entity.ContractionEntity
 import com.navigatemama.core.database.entity.FavoriteEntity
 import com.navigatemama.core.database.entity.JourneyEntryEntity
@@ -76,6 +78,30 @@ interface ReviewDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(review: ReviewEntity)
+}
+
+@Dao
+interface ChildDao {
+    @Query("SELECT * FROM children ORDER BY birthDate DESC, name ASC")
+    fun observeChildren(): LiveData<List<ChildProfileEntity>>
+
+    @Query("SELECT * FROM care_events ORDER BY occurredAt DESC")
+    fun observeCareEvents(): LiveData<List<CareEventEntity>>
+
+    @Query("SELECT COUNT(*) FROM children")
+    suspend fun count(): Int
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertChild(child: ChildProfileEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertCareEvent(event: CareEventEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun replaceChildren(children: List<ChildProfileEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun replaceCareEvents(events: List<CareEventEntity>)
 }
 
 @Dao

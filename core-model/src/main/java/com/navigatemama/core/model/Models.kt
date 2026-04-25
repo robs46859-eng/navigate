@@ -19,6 +19,15 @@ enum class PlaceCategory {
     CAFE
 }
 
+enum class CareEventType {
+    FEEDING,
+    DIAPER,
+    SLEEP,
+    MEDICINE,
+    APPOINTMENT,
+    MILESTONE
+}
+
 data class UserProfile(
     val uid: String,
     val displayName: String,
@@ -46,6 +55,25 @@ data class Place(
     val avgCleanliness: Double,
     val avgPrivacy: Double,
     val strollerAccessRate: Double
+)
+
+data class ChildProfile(
+    val id: String,
+    val name: String,
+    val birthDate: String,
+    val stageLabel: String,
+    val pediatrician: String?,
+    val allergies: String?,
+    val notes: String?
+)
+
+data class CareEvent(
+    val id: String,
+    val childId: String,
+    val type: CareEventType,
+    val title: String,
+    val occurredAt: Long,
+    val notes: String?
 )
 
 data class Review(

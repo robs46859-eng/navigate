@@ -15,6 +15,11 @@
         android:label="@string/journey_nav" />
 
     <fragment
+        android:id="@+id/kidsFragment"
+        android:name="com.navigatemama.app.kids.KidsFragment"
+        android:label="@string/kids_nav" />
+
+    <fragment
         android:id="@+id/profileFragment"
         android:name="com.navigatemama.app.profile.ProfileFragment"
         android:label="@string/profile_nav" />

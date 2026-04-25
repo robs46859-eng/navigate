@@ -1,9 +1,9 @@
 package com.navigatemama.app.shared
 
 import android.content.Context
-import com.google.firebase.auth.FirebaseAuth
 import com.navigatemama.core.data.firebase.FirebaseProviders
 import com.navigatemama.core.data.repository.AuthRepository
+import com.navigatemama.core.data.repository.ChildRepository
 import com.navigatemama.core.data.repository.JourneyRepository
 import com.navigatemama.core.data.repository.PlacesRepository
 import com.navigatemama.core.data.repository.ProfileRepository
@@ -28,10 +28,13 @@ object ServiceLocator {
         )
 
     fun authRepository(context: Context): AuthRepository =
-        AuthRepository(FirebaseAuth.getInstance())
+        AuthRepository(FirebaseProviders.authOrNull(context))
 
     fun placesRepository(context: Context): PlacesRepository =
         PlacesRepository(database(context), FirebaseProviders.firestoreOrNull(context))
+
+    fun childRepository(context: Context): ChildRepository =
+        ChildRepository(database(context))
 
     fun journeyRepository(context: Context): JourneyRepository =
         JourneyRepository(database(context))

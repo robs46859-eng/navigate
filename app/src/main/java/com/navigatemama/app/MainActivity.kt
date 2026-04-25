@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.navigatemama.app.databinding.ActivityMainBinding
+import com.navigatemama.app.diagnostics.AppLog
 import com.navigatemama.app.onboarding.OnboardingActivity
 import com.navigatemama.app.onboarding.OnboardingPreferences
 import com.navigatemama.app.shared.InAppUpdateCoordinator
@@ -39,9 +40,15 @@ class MainActivity : AppCompatActivity() {
         updateCoordinator.maybeStartFlexibleUpdate(this, appUpdateLauncher)
 
         lifecycleScope.launch {
-            ServiceLocator.profileRepository(this@MainActivity).ensureDefaultProfile()
-            ServiceLocator.placesRepository(this@MainActivity).seedIfEmpty()
-            ServiceLocator.placesRepository(this@MainActivity).syncPlacesFromFirestore()
+            runCatching {
+                ServiceLocator.profileRepository(this@MainActivity).ensureDefaultProfile()
+                val placesRepository = ServiceLocator.placesRepository(this@MainActivity)
+                placesRepository.seedIfEmpty()
+                ServiceLocator.childRepository(this@MainActivity).seedIfEmpty()
+                placesRepository.syncPlacesFromFirestore()
+            }.onFailure { error ->
+                AppLog.w("Startup data sync failed; continuing in local mode.", error)
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.navigatemama.core.database
 
 import androidx.room.TypeConverter
+import com.navigatemama.core.model.CareEventType
 import com.navigatemama.core.model.PlaceCategory
 import com.navigatemama.core.model.UserStage
 
@@ -16,4 +17,10 @@ class NavigateTypeConverters {
 
     @TypeConverter
     fun toPlaceCategory(value: String): PlaceCategory = PlaceCategory.valueOf(value)
+
+    @TypeConverter
+    fun fromCareEventType(value: CareEventType): String = value.name
+
+    @TypeConverter
+    fun toCareEventType(value: String): CareEventType = CareEventType.valueOf(value)
 }

@@ -10,6 +10,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.navigatemama.core.database.entity.FavoriteEntity
 import com.navigatemama.core.database.NavigateDatabase
+import com.navigatemama.core.database.entity.CareEventEntity
+import com.navigatemama.core.database.entity.ChildProfileEntity
 import com.navigatemama.core.database.entity.ContractionEntity
 import com.navigatemama.core.database.entity.JourneyEntryEntity
 import com.navigatemama.core.database.entity.KickCountEntity
@@ -17,6 +19,9 @@ import com.navigatemama.core.database.entity.PlaceEntity
 import com.navigatemama.core.database.entity.ReviewEntity
 import com.navigatemama.core.database.entity.SleepSessionEntity
 import com.navigatemama.core.database.entity.UserProfileEntity
+import com.navigatemama.core.model.CareEvent
+import com.navigatemama.core.model.CareEventType
+import com.navigatemama.core.model.ChildProfile
 import com.navigatemama.core.model.CommunityPost
 import com.navigatemama.core.model.ContractionLog
 import com.navigatemama.core.model.JourneyEntry
@@ -268,6 +273,38 @@ class PlacesRepository(
     }
 }
 
+class ChildRepository(
+    private val database: NavigateDatabase
+) {
+    fun observeChildren(): LiveData<List<ChildProfile>> {
+        return database.childDao().observeChildren().map { list -> list.map { entity -> entity.toModel() } }
+    }
+
+    fun observeCareEvents(): LiveData<List<CareEvent>> {
+        return database.childDao().observeCareEvents().map { list -> list.map { entity -> entity.toModel() } }
+    }
+
+    suspend fun seedIfEmpty() = withContext(Dispatchers.IO) {
+        if (database.childDao().count() > 0) return@withContext
+        database.childDao().replaceChildren(seedChildren())
+        database.childDao().replaceCareEvents(seedCareEvents())
+    }
+
+    suspend fun addCareEvent(childId: String, type: CareEventType, title: String, notes: String?) =
+        withContext(Dispatchers.IO) {
+            database.childDao().upsertCareEvent(
+                CareEventEntity(
+                    id = UUID.randomUUID().toString(),
+                    childId = childId,
+                    type = type,
+                    title = title,
+                    occurredAt = System.currentTimeMillis(),
+                    notes = notes
+                )
+            )
+        }
+}
+
 class JourneyRepository(
     private val database: NavigateDatabase
 ) {
@@ -392,6 +429,25 @@ private fun PlaceEntity.toModel() = Place(
     avgCleanliness = avgCleanliness,
     avgPrivacy = avgPrivacy,
     strollerAccessRate = strollerAccessRate
+)
+
+private fun ChildProfileEntity.toModel() = ChildProfile(
+    id = id,
+    name = name,
+    birthDate = birthDate,
+    stageLabel = stageLabel,
+    pediatrician = pediatrician,
+    allergies = allergies,
+    notes = notes
+)
+
+private fun CareEventEntity.toModel() = CareEvent(
+    id = id,
+    childId = childId,
+    type = type,
+    title = title,
+    occurredAt = occurredAt,
+    notes = notes
 )
 
 private fun ReviewEntity.toModel() = Review(
@@ -548,6 +604,171 @@ private fun seedPlaces() = listOf(
         avgCleanliness = 4.1,
         avgPrivacy = 3.8,
         strollerAccessRate = 0.96
+    ),
+    PlaceEntity(
+        id = "saint-joseph-hospital",
+        name = "Saint Joseph Hospital",
+        address = "1375 E 19th Ave, Denver, CO 80218",
+        category = PlaceCategory.HOSPITAL,
+        latitude = 39.7461,
+        longitude = -104.9703,
+        source = "Intermountain Health public hospital directory",
+        rating = 4.5,
+        reviewCount = 118,
+        description = "Central Denver hospital with birth center services, maternal-fetal medicine access, and emergency care.",
+        hours = "Open 24 hours",
+        phone = "(303) 812-2000",
+        websiteUrl = "https://intermountainhealthcare.org/locations/saint-joseph-hospital",
+        avgCleanliness = 4.6,
+        avgPrivacy = 4.4,
+        strollerAccessRate = 0.93
+    ),
+    PlaceEntity(
+        id = "childrens-colorado-urgent-care-denver",
+        name = "Children's Hospital Colorado Urgent Care - Denver",
+        address = "1830 N Franklin St, Denver, CO 80218",
+        category = PlaceCategory.URGENT_CARE,
+        latitude = 39.7453,
+        longitude = -104.9684,
+        source = "Children's Hospital Colorado location directory",
+        rating = 4.4,
+        reviewCount = 96,
+        description = "Pediatric urgent care option for after-hours illness, fever checks, injuries, and child-focused triage.",
+        hours = "Hours vary by clinic",
+        phone = "(720) 777-1360",
+        websiteUrl = "https://www.childrenscolorado.org/locations/",
+        avgCleanliness = 4.6,
+        avgPrivacy = 4.3,
+        strollerAccessRate = 0.92
+    ),
+    PlaceEntity(
+        id = "denver-art-museum-family-amenities",
+        name = "Denver Art Museum Family Amenities",
+        address = "100 W 14th Ave Pkwy, Denver, CO 80204",
+        category = PlaceCategory.NURSING_ROOM,
+        latitude = 39.7372,
+        longitude = -104.9897,
+        source = "Denver Art Museum visitor information",
+        rating = 4.7,
+        reviewCount = 64,
+        description = "Family-friendly museum stop with nursing parent space, changing access, elevators, and stroller-friendly galleries.",
+        hours = "10:00 AM - 5:00 PM",
+        phone = "(720) 865-5000",
+        websiteUrl = "https://www.denverartmuseum.org/",
+        avgCleanliness = 4.6,
+        avgPrivacy = 4.5,
+        strollerAccessRate = 0.95
+    ),
+    PlaceEntity(
+        id = "tattered-cover-colfax-kids",
+        name = "Tattered Cover Colfax Kids Section",
+        address = "2526 E Colfax Ave, Denver, CO 80206",
+        category = PlaceCategory.REST_STOP,
+        latitude = 39.7400,
+        longitude = -104.9576,
+        source = "Tattered Cover public store information",
+        rating = 4.6,
+        reviewCount = 146,
+        description = "Calm indoor rest stop with a children's book area, seating, nearby cafes, and stroller-friendly browsing.",
+        hours = "Hours vary",
+        phone = "(303) 322-7727",
+        websiteUrl = "https://www.tatteredcover.com/",
+        avgCleanliness = 4.4,
+        avgPrivacy = 3.9,
+        strollerAccessRate = 0.88
+    ),
+    PlaceEntity(
+        id = "city-park-playground",
+        name = "City Park Playground",
+        address = "2001 Colorado Blvd, Denver, CO 80205",
+        category = PlaceCategory.PLAYGROUND,
+        latitude = 39.7475,
+        longitude = -104.9490,
+        source = "Denver Parks and Recreation",
+        rating = 4.7,
+        reviewCount = 201,
+        description = "Large park outing option near museums with shaded paths, picnic areas, restrooms, and easy stroller loops.",
+        hours = "5:00 AM - 11:00 PM",
+        phone = null,
+        websiteUrl = "https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Parks-Recreation",
+        avgCleanliness = 4.1,
+        avgPrivacy = 3.7,
+        strollerAccessRate = 0.94
+    ),
+    PlaceEntity(
+        id = "jewish-family-service-denver",
+        name = "Jewish Family Service of Colorado",
+        address = "3201 S Tamarac Dr, Denver, CO 80231",
+        category = PlaceCategory.REST_STOP,
+        latitude = 39.6570,
+        longitude = -104.9008,
+        source = "Jewish Family Service of Colorado public programs",
+        rating = 4.5,
+        reviewCount = 44,
+        description = "Family support organization with food, mental health, and stability services useful for postpartum and caregiver support.",
+        hours = "Weekday business hours",
+        phone = "(303) 597-5000",
+        websiteUrl = "https://www.jewishfamilyservice.org/",
+        avgCleanliness = 4.4,
+        avgPrivacy = 4.3,
+        strollerAccessRate = 0.86
+    ),
+    PlaceEntity(
+        id = "doulas-of-denver",
+        name = "Doulas of Denver",
+        address = "383 Corona St, Denver, CO 80218",
+        category = PlaceCategory.REST_STOP,
+        latitude = 39.7224,
+        longitude = -104.9746,
+        source = "Doulas of Denver public service page",
+        rating = 4.8,
+        reviewCount = 52,
+        description = "Birth and postpartum doula support, including labor preparation and recovery help for Denver families.",
+        hours = "By appointment",
+        phone = "(720) 310-0120",
+        websiteUrl = "https://www.doulasofdenver.com/",
+        avgCleanliness = 4.7,
+        avgPrivacy = 4.8,
+        strollerAccessRate = 0.82
+    )
+)
+
+private fun seedChildren() = listOf(
+    ChildProfileEntity(
+        id = "child-1",
+        name = "Avery",
+        birthDate = "2025-11-12",
+        stageLabel = "5 months",
+        pediatrician = "Children's Colorado Denver area clinic",
+        allergies = "None logged",
+        notes = "Prefers smaller feeds more often and naps best after stroller walks."
+    )
+)
+
+private fun seedCareEvents() = listOf(
+    CareEventEntity(
+        id = "care-1",
+        childId = "child-1",
+        type = CareEventType.FEEDING,
+        title = "Bottle feed",
+        occurredAt = System.currentTimeMillis() - 2_700_000,
+        notes = "4 oz, paced feeding"
+    ),
+    CareEventEntity(
+        id = "care-2",
+        childId = "child-1",
+        type = CareEventType.SLEEP,
+        title = "Morning nap",
+        occurredAt = System.currentTimeMillis() - 8_100_000,
+        notes = "1 hr 20 min"
+    ),
+    CareEventEntity(
+        id = "care-3",
+        childId = "child-1",
+        type = CareEventType.MILESTONE,
+        title = "Rolled belly to back",
+        occurredAt = System.currentTimeMillis() - 172_800_000,
+        notes = "Logged during tummy time"
     )
 )
 

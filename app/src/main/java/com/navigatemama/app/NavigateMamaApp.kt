@@ -29,7 +29,7 @@ class NavigateMamaApp : Application() {
         runCatching {
             FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
         }
-        AppLog.i("Navigate Mama starting (perplexity checklist: Crashlytics enabled)")
+        AppLog.i("Navigate Mama starting")
 
         val auth = runCatching { FirebaseAuth.getInstance() }.getOrNull() ?: return
         lastFirebaseUid = auth.currentUser?.uid

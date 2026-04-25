@@ -22,7 +22,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = fragmentBinding
 
         viewModel.firebaseUser.observe(viewLifecycleOwner) { user ->
-            if (user != null) {
+            if (!viewModel.isCloudAuthAvailable) {
+                fragmentBinding.authStatus.text = getString(R.string.auth_unavailable)
+                fragmentBinding.signInButton.visibility = View.GONE
+                fragmentBinding.signOutButton.visibility = View.GONE
+            } else if (user != null) {
                 fragmentBinding.authStatus.text = getString(R.string.auth_signed_in_as, user.email ?: "")
                 fragmentBinding.signInButton.visibility = View.GONE
                 fragmentBinding.signOutButton.visibility = View.VISIBLE
@@ -49,12 +53,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             fragmentBinding.profileName.text = profile.displayName
             fragmentBinding.profileEmail.text = profile.email.ifEmpty { getString(R.string.profile_email_placeholder) }
             fragmentBinding.profileStage.text = profile.stage.name.replace('_', ' ').lowercase().replaceFirstChar { it.uppercase() }
+            fragmentBinding.routingSwitch.setOnCheckedChangeListener(null)
             fragmentBinding.routingSwitch.isChecked = profile.comfortRoutingEnabled
+            fragmentBinding.routingSwitch.setOnCheckedChangeListener { _, checked ->
+                viewModel.updateComfortRouting(checked)
+            }
             fragmentBinding.streakLabel.text = getString(R.string.streak_format, profile.streakDays)
-        }
-
-        fragmentBinding.routingSwitch.setOnCheckedChangeListener { _, checked ->
-            viewModel.updateComfortRouting(checked)
         }
         fragmentBinding.reviewButton.setOnClickListener {
             InAppReviewCoordinator(requireContext()).launch(requireActivity())

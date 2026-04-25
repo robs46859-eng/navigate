@@ -17,13 +17,23 @@ class AuthActivity : AppCompatActivity() {
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val authRepo = ServiceLocator.authRepository(this)
         binding.toolbar.setNavigationOnClickListener { finish() }
+        if (!authRepo.isAvailable) {
+            binding.emailInput.isEnabled = false
+            binding.passwordInput.isEnabled = false
+            binding.signInButton.isEnabled = false
+            binding.registerButton.isEnabled = false
+            binding.errorText.text = getString(com.navigatemama.app.R.string.auth_unavailable)
+            binding.errorText.visibility = View.VISIBLE
+            return
+        }
 
-        binding.signInButton.setOnClickListener { submit(isRegister = false) }
-        binding.registerButton.setOnClickListener { submit(isRegister = true) }
+        binding.signInButton.setOnClickListener { submit(authRepo, isRegister = false) }
+        binding.registerButton.setOnClickListener { submit(authRepo, isRegister = true) }
     }
 
-    private fun submit(isRegister: Boolean) {
+    private fun submit(authRepo: com.navigatemama.core.data.repository.AuthRepository, isRegister: Boolean) {
         val email = binding.emailInput.text.toString().trim()
         val password = binding.passwordInput.text.toString()
         if (email.isEmpty() || password.length < 6) {
@@ -32,7 +42,6 @@ class AuthActivity : AppCompatActivity() {
         }
         binding.progress.visibility = View.VISIBLE
         binding.errorText.visibility = View.GONE
-        val authRepo = ServiceLocator.authRepository(this)
         lifecycleScope.launch {
             try {
                 if (isRegister) {

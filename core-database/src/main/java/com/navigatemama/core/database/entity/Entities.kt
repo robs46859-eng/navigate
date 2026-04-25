@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.navigatemama.core.model.CareEventType
 import com.navigatemama.core.model.PlaceCategory
 import com.navigatemama.core.model.UserStage
 
@@ -53,6 +54,38 @@ data class PlaceEntity(
     val avgCleanliness: Double,
     val avgPrivacy: Double,
     val strollerAccessRate: Double
+)
+
+@Entity(tableName = "children")
+data class ChildProfileEntity(
+    @PrimaryKey val id: String,
+    val name: String,
+    val birthDate: String,
+    val stageLabel: String,
+    val pediatrician: String?,
+    val allergies: String?,
+    val notes: String?
+)
+
+@Entity(
+    tableName = "care_events",
+    foreignKeys = [
+        ForeignKey(
+            entity = ChildProfileEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["childId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+    indices = [Index("childId")]
+)
+data class CareEventEntity(
+    @PrimaryKey val id: String,
+    val childId: String,
+    val type: CareEventType,
+    val title: String,
+    val occurredAt: Long,
+    val notes: String?
 )
 
 @Entity(

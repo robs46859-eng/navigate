@@ -9,6 +9,10 @@
         android:icon="@android:drawable/ic_menu_today"
         android:title="@string/journey_nav" />
     <item
+        android:id="@+id/kidsFragment"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/kids_nav" />
+    <item
         android:id="@+id/profileFragment"
         android:icon="@android:drawable/ic_menu_manage"
         android:title="@string/profile_nav" />

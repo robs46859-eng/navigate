@@ -1,6 +1,6 @@
 # Navigate Mama
 
-`Navigate Mama` is now a native Android app scaffold for new and pregnant mothers, built in the existing `navigate` repo and structured for Android Studio.
+`Navigate Mama` is a native Android app for new and pregnant mothers, built in the existing `navigate` repo and structured for Android Studio, with the legacy web prototype still present in `src/`.
 
 ## What is in the project
 
@@ -31,7 +31,7 @@
 
 The repo includes a Gradle wrapper and builds with:
 
-- Android Gradle Plugin `8.7.3`
+- Android Gradle Plugin `8.13.2`
 - Kotlin `2.0.21`
 - Compile SDK `36`
 - JDK from Android Studio bundled runtime
@@ -42,9 +42,15 @@ Build command:
 ./gradlew :app:assembleDebug
 ```
 
+If Gradle cannot find the Android SDK, either set `ANDROID_HOME` or create a local-only `local.properties` file:
+
+```properties
+sdk.dir=/Users/<your-user>/Library/Android/sdk
+```
+
 ## Android Studio notes
 
-- Open `/Users/joeiton/AndroidStudioProjects/navigate` in Android Studio.
+- Open `/Users/joeiton/Projects/navigate` in Android Studio.
 - `local.properties` is configured for the local SDK path on this Mac.
 - Gradle memory is pre-tuned in `gradle.properties` with a 6 GB heap and parallel/cached builds.
 - The existing web app files are still present in the repo, but Android Studio should use the native Gradle project.

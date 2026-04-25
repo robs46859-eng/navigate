@@ -22,6 +22,7 @@ firebaseCrashlyticsGradle = "3.0.2"
 gson = "2.11.0"
 recyclerview = "1.3.2"
 swiperefresh = "1.1.0"
+j2objc = "2.8"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
@@ -53,6 +54,7 @@ firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+j2objc-annotations = { module = "com.google.j2objc:j2objc-annotations", version.ref = "j2objc" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
